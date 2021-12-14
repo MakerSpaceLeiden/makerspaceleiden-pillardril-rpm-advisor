@@ -17,13 +17,16 @@
 // per seconds (e.g. if the speed is 300 RPM; we get 50/second pulses; so a pulse
 // just being early or late when we sample 4 times a second gives us a ~54% 'dance'.
 //
-// Measuring pulse length gives us more granualrity - microseconds on pulses of about
-// 20 milliseconds is a fair number of 'extra' digits.
-//
-//
-static unsigned long dt = 0;
 
 #define PRM_AGG_LEN (2) // log(2) of exponential aggregation len 0=1(off), 1=2, 2=4, 3=8, etc..
+
+// Measuring pulse length gives us more granualrity - microseconds on pulses of about
+// 20 milliseconds is a fair number of 'extra' digits. Assuming a low speed (e.g. 60 
+// RPM is at the very bottom of the range) means about 1 pulse/second (unless we
+// sticker the wheel double/quadruple) -- so with a eponential averaging length of
+// 4 it will take several seconds before it responses.
+//
+static unsigned long dt = 0;
 
 static void IRAM_ATTR pwm_int_handle() {
   static unsigned long last = 0;
