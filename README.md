@@ -4,3 +4,5 @@ Simply RPM meter for the pillar dril:
 
 at the makersplace leiden.
 
+<img src="https://github.com/MakerSpaceLeiden/makerspaceleiden-pillardril-rpm-advisor/blob/main/screen-design.png">
+
